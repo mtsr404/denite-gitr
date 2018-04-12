@@ -17,12 +17,12 @@ class Source(Base):
             }
 
     def gather_candidates(self, context):
-        def create(word,target):
+        def create(word,diffTarget):
 
             return {
                 'word': word,
                 'name': word,
-                'diffTarget': target,
+                'diffTarget': diffTarget,
             }
 
 
@@ -33,6 +33,6 @@ class Source(Base):
 
         results = []
         for fileName in files:
-            results.extend([create(fileName.rstrip(),target)])
+            results.extend([create(fileName.rstrip(),diffTarget)])
 
         return results
