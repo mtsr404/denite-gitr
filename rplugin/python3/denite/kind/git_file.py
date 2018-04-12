@@ -17,10 +17,11 @@ class Kind(Base):
 
     def action_git_show_diff_in_file(self, context):
         fileName = context['targets'][0]['word'].split()[-1]
+        diffTarget = context['targets'][0]['diffTarget']
 
         # self.vim.command('Gvdiff master:{0}'.format(fileName))
         # self.vim.command('only')
-        self.vim.command('Gina compare \'master:{0}\' '.format(fileName))
+        self.vim.command('Gina compare \'{0}:{1}\' '.format(diffTarget,fileName))
         self.vim.command('wincmd k')
         self.vim.command('set foldmethod=diff')
         # self.vim.command('echomsg \'{0}\''.format(fileName))
